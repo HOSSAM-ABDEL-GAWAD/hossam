@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حسام حسن - موقعي الشخصي</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="sscript.js"href="script.js">
+  <link rel="icon" type="image/png" href="img/Untitled-1.png.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(135deg, #0080ff, #000);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+    }
+    header img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-in;
+    }
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    header p {
+      font-size: 20px;
+      animation: fadeInUp 1s ease-in-out;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+      animation: fadeIn 1s ease-in;
+    }
+    section h2 {
+      color: #00bcd4;
+      margin-bottom: 20px;
+      font-size: 28px;
+      border-bottom: 2px solid #00bcd4;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      padding: 20px 0;
+    }
+    .gallery-item {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-item img, .gallery-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    .gallery-overlay p {
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    /* تحسين الأزرار */
+    .project-button, .gallery-button, .video-button, .certificate-button {
+      background-color: #4caf50;
+      color: white;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* تأثيرات عند المرور على الأزرار */
+    .project-button:hover, .gallery-button:hover, .video-button:hover, .certificate-button:hover {
+      background-color: #388e3c;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .cv-download {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .cv-download a {
+      background-color: #00bcd4;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .cv-download a:hover {
+      background-color: #008c9e;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    input, textarea {
+      padding: 10px;
+      font-family: 'Cairo', sans-serif;
+      border: 1px solid #444;
+      background-color: #1e1e1e;
+      color: white;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #00bcd4;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #008c9e;
+      transform: translateY(-5px);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #000;
+      color: white;
+    }
+    a {
+      color: #00bcd4;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: #008c9e;
+    }
+    @keyframes fadeInDown {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="img/Untitled-1.png.png" alt="حسام حسن">
+    <h1>مرحبًا، أنا حسام حسن</h1>
+    <p>طالب في كلية التجارة – جامعة بني سويف</p>
+  </header>
+
+  <section id="about">
+    <h2>من أنا؟</h2>
+    <p style="font: var(#1e1e1e);font-size: large;">Hello! I'm Hossam Hassan, a student at the Faculty of Commerce at Beni Suef University. I specialize in graphic design and have experience using programs such as Photoshop and editing software like Premiere. I also hold an MOS Master certificate in Microsoft Office, which enhances my skills in data analysis and the use of various Office tools. In addition, I have content writing skills and am working on improving my HTML programming skills. I am passionate about learning new skills and sharing my knowledge with others.</p>
+    <div class="cv-download">
+      <a href="fill/HOSSAM HASSAN.docx" download>تحميل السيرة الذاتية (PDF)</a>
+    </div>
+  </section>
+  
+
+  <section id="projects">
+    <h2>مشاريعي</h2>
+    <div class="project-gallery">
+      
+      <a target="_blank" href="https://docs.google.com/spreadsheets/d/1XLoyIxpLc5vfWqRoq1nLNCM0rE-MxJ6d/edit?usp=drive_link&ouid=102591328994987386421&rtpof=true&sd=true" class="project-button">ملف Excel 1</a>
+      <a target="_blank" href="https://docs.google.com/spreadsheets/d/1aOm29ERrRHu64zfzZO_a_qZwU2vW1_ZU/edit?usp=drive_link&ouid=102591328994987386421&rtpof=true&sd=true" class="project-button">ملف Excel 2</a>
+      <a target="_blank" href="#" class="project-button">ملف Excel 3</a>
+    </div>
+  </section>
+
+  <section id="myWorks">
+    <h2>أعمالي</h2>
+    <div class="gallery">
+      <div  class="gallery-item">
+        <a  href="img/nour.jpg">
+          <img src="img/nour.jpg" alt="تصميم 1">
+          <div style="size: 49%;" class="gallery-overlay">
+            <p>تصميم 1</p>
+          </div>
+        </a>
+      </div>
+      <div  class="gallery-item">
+        <a  href="img/shoes.jpg">
+          <img src="img/shoes.jpg" alt="تصميم 2">
+          <div  class="gallery-overlay">
+            <p>تصميم 2</p>
+          </div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="img/hossam taxt.jpg">
+          <img src="img/hossam taxt.jpg" alt="تصميم 3">
+          <div class="gallery-overlay">
+            <p>تصميم 3</p>
+          </div>
+        </a>
+      </div>
+      <div class="gallery-item">
+        <a href="img/تعديل تاني_1.mp4">
+          <video src="img/تعديل تاني_1.mp4" controls></video>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <h2>فيديوهاتي</h2>
+    
+    <div class="video-gallery">
+      <iframe src="https://www.youtube.com/embed/mygOKgWzEuY" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/yXLr2PYYvZE" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/1oOiG2Qrg7Y" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/z8E0vGJGO-Q" allowfullscreen></iframe>
+    </div>
+  </section>
+  
+  <style>
+    .video-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding-top: 20px;
+    }
+  
+    .video-gallery iframe {
+      width: 360px;
+      height: 215px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+  
+    .video-gallery iframe:hover {
+      transform: scale(1.05);
+    }
+  </style>
+  
+  
+  <style>
+    .video-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding-top: 20px;
+    }
+  
+    .video-gallery iframe {
+      width: 360px;
+      height: 215px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+  
+    .video-gallery iframe:hover {
+      transform: scale(1.05);
+    }
+  </style>  
+
+  <section id="certificates">
+    <h2>الشهادات</h2>
+    <div class="certificate-links">
+      <a href="https://drive.google.com/file/d/1hiKbUNzPDkijNq0uGnvULbRdv9Ffzh4o/view?usp=drive_link" class="certificate-button">اساسيات التحريك</a>
+      <a href="https://drive.google.com/file/d/1r9Xel3dTGHLS72E30oFYT7w0-_EnIVNY/view?usp=drive_link" class="certificate-button">تحليل بيانات السوشيال ميديا</a>
+    </div>
+  </section>
+  <section id="contact" data-aos="fade-up">
+    <h2>اتصل بي</h2>
+    <p>يمكنك التواصل عبر البريد: <a href="mailto:hh8500732@gmail.com" style="color:#ffcc00;">hh8500732@gmail.com</a></p>
+    <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?id=61556301363251" target="_blank">
+            <img src="img/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/3bgwed/" target="_blank">
+            <img src="img/social.png" alt="Instagram">
+        </a>
+        <a href="https://www.youtube.com/@3bgwed2003" target="_blank">
+            <img src="/img/music.png" alt="YouTube">
+        </a>
+    </div>
+</section>
+  <footer>
+    <p>© 2025 حسام حسن - جميع الحقوق محفوظة</p>
+  </footer>
+</body>
+</html>
